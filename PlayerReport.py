@@ -10,6 +10,7 @@ class PlayerReport:
         self.id = ''
         self.pos = ''
         self.team = ''
+        self.group = ''
         self.rank = ''
         self.report_txt = ''
         self.ofp = ''
@@ -20,7 +21,7 @@ class PlayerReport:
         :return: String representation of object.
         """
         report_detail_str = ','.join([self.source, self.date, self.report_type])
-        player_detail_str = ','.join([self.name, self.id, self.pos, self.team])
+        player_detail_str = ','.join([self.name, self.id, self.pos, self.team, self.group])
         report_metric_str = ','.join([self.rank, self.ofp, self.var])
         p_report_str = '\n'.join([report_detail_str, player_detail_str, report_metric_str, self.report_txt])
 
@@ -41,7 +42,10 @@ class PlayerReport:
         """
 
         p_report_vec = [self.source, self.date, self.report_type,
-                        self.name, self.id, self.pos, self.team,
+                        self.name, self.id, self.pos, self.team, self.group,
                         self.rank, self.report_txt.strip(), self.ofp, self.var]
 
         return p_report_vec
+
+    def remove_non_ascii(self):
+        self.report_txt = self.report_txt.encode('ascii', errors = 'ignore').decode()

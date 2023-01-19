@@ -109,7 +109,4 @@ def ba_2023_team_wrapper():
                   'Name', 'ID', 'POS', 'Team', 'Group',
                   'Rank', 'Report', 'OFP', 'Var']
     csvwriter.writerow(doc_fields)
-    #csvwriter.writerows([x.p_report_vector() for x in report_list])
-    for x in report_list:
-        print(x.p_report_vector())
-        csvwriter.writerow(x.p_report_vector())
+    csvwriter.writerows([x.p_report_vector() for x in report_list])

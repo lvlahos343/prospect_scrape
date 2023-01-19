@@ -2,9 +2,14 @@
 Functions for scraping data from Baseball Prospectus.
 """
 
+from bs4 import BeautifulSoup as bs
+import csv
 from PlayerReport import *
 from datetime import datetime
 import re
+from os import listdir
+from os.path import isfile, join
+import math
 
 def bp_cookie_dict():
     # cookie string text file
@@ -196,7 +201,7 @@ def bp_2023_team_wrapper():
         print(bp_team)
         html_page = open(join(bp_html_path, bpf), encoding='utf8')
         html_soup = bs(html_page, 'html.parser')
-        report_list = report_list + bp_2023_team_scrape(html_soup, team_name='ARZ')
+        report_list = report_list + bp_2023_team_scrape(html_soup, team_name=bp_team)
     print(len(report_list))
 
     # create document

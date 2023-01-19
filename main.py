@@ -6,21 +6,22 @@ import requests
 import re
 import js2py
 import csv
-import math
 
 from PlayerReport import *
 from bp_scrape import *
 from ba_scrape import *
-from os import listdir
-from os.path import isfile, join
+from fg_scrape import *
 
 
 def main():
-    #print('Scraping BA reports:')
-    #ba_2023_team_wrapper()
+    print('Scraping BA reports:')
+    ba_2023_team_wrapper()
 
     print('Scraping BP reports:')
     bp_2023_team_wrapper()
+
+    print('Scraping FG reports:')
+    fg_2023_team_wrapper()
 
     #bp_file = '../raw_data/bp_2023_team/bp_2023_MIN_team-list.html'
     #html_page = open(bp_file, encoding='utf8')
